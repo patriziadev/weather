@@ -1,1 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+$black: #100E1D;
+
+$text: #fff;
+
+body {
+    background-color: $black;
+    color: $text;
+}
