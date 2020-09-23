@@ -1,12 +1,14 @@
 @import '~material-design-icons/iconfont/material-icons.css';
 
-$black: #100E1D;
+$main-background: #100E1D;
 $left-background: #1E213A;
+$toolbar-button-color: #E7E7EB;
 $toolbar-button-background: #6E707A;
+$toolbar-button-dimension: 40px;
 $text: #fff;
 
 body {
-    background-color: $black;
+    background-color: $main-background;
     color: $text;
     margin: 0;
 }
@@ -16,10 +18,26 @@ body {
     margin: 0;
 }
 
-.toolbar button {
-    background-color: $toolbar-button-background;
+.toolbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100px;
 
-    &.round {
-        border-radius: 50px;
+    button {
+        color: $toolbar-button-color;
+        background-color: $toolbar-button-background;
+        box-shadow: 0 4px 8px $main-background;
+        border: 0;
+        height: $toolbar-button-dimension;
+
+        &.square {
+            padding: 0 20px;
+        }
+    
+        &.round {
+            border-radius: 50px; 
+            width: $toolbar-button-dimension;
+        }
     }
 }
