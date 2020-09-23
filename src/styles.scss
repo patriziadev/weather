@@ -3,7 +3,9 @@
 $main-background: #100E1D;
 $left-background: #1E213A;
 $toolbar-button-color: #E7E7EB;
+$toolbar-button-color-hover: #110E3C;
 $toolbar-button-background: #6E707A;
+$toolbar-button-background-hover: #E7E7EB;
 $toolbar-button-dimension: 40px;
 $text: #fff;
 $text-font: 'Raleway', sans-serif;
@@ -32,6 +34,16 @@ body {
         box-shadow: 0 4px 8px $main-background;
         border: 0;
         height: $toolbar-button-dimension;
+        transition: 1s;
+
+        &:hover {
+            color: $toolbar-button-color-hover;
+            background-color: $toolbar-button-background-hover;
+        }
+
+        &:focus {
+            outline: none;
+        }
 
         &.square {
             padding: 0 20px;
