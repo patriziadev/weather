@@ -1,8 +1,25 @@
-$black: #100E1D;
+@import '~material-design-icons/iconfont/material-icons.css';
 
+$black: #100E1D;
+$left-background: #1E213A;
+$toolbar-button-background: #6E707A;
 $text: #fff;
 
 body {
     background-color: $black;
     color: $text;
+    margin: 0;
+}
+
+#today-preview {
+    background-color: $left-background;
+    margin: 0;
+}
+
+.toolbar button {
+    background-color: $toolbar-button-background;
+
+    &.round {
+        border-radius: 50px;
+    }
 }
