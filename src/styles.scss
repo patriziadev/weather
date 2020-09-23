@@ -6,10 +6,12 @@ $toolbar-button-color: #E7E7EB;
 $toolbar-button-background: #6E707A;
 $toolbar-button-dimension: 40px;
 $text: #fff;
+$text-font: 'Raleway', sans-serif;
 
 body {
     background-color: $main-background;
     color: $text;
+    font-family: $text-font;
     margin: 0;
 }
 
