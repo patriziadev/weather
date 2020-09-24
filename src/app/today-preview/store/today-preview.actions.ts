@@ -4,7 +4,8 @@ import { LocationModel } from '../../models/location.model';
 
 export const START_LOCATION = '[TodayPreview] StartLocation';
 export const FIND_LOCATION_DETAILS = '[TodayPreview] FindLocationDetails';
-export const UPDATE_LOCATION = '[Today Preview] UpdateLocation';
+export const UPDATE_LOCATION = '[TodayPreview] UpdateLocation';
+export const ERROR_LOCATION = '[TodayPreview] ErrorLocation';
 
 export class StartLocation implements Action {
     readonly type = START_LOCATION;
@@ -20,7 +21,13 @@ export class UpdateLocation implements Action {
     constructor( public payload: LocationModel ) {}
 }
 
+export class ErrorLocation implements Action {
+    readonly type = ERROR_LOCATION;
+    constructor( public payload: string ) {}
+}
+
 export type TodayPreviewActions =
     | StartLocation
     | FindLocationDetails
-    | UpdateLocation;
+    | UpdateLocation
+    | ErrorLocation;

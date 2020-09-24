@@ -33,6 +33,7 @@ export class TodayPreviewComponent implements OnInit, OnDestroy {
 
     this.storeSubscription = this.store.select('todayPreview').subscribe( responseData => {
       this.location = responseData.location;
+      this.error = responseData.error;
     });
   }
 
