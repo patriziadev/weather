@@ -55,7 +55,6 @@ export class TodayPreviewEffects {
                 environment.locationDayApi + response.payload.woeid
             ).pipe(
                 map( responseData => {
-                    console.log(responseData);
                     return new TodayPreviewActions.UpdateWeather(responseData.consolidated_weather);
                 })
             );

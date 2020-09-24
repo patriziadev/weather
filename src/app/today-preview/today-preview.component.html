@@ -4,6 +4,11 @@
 </div>
 <div class="weather">
     <p *ngIf="error">{{ error }}</p>
+    <div *ngIf="weatherForecast">
+        <img alt="{{todayWeather.weather_state_name}}" src="../../assets/images/{{todayWeather.weather_state_name}}.png">
+        <p class="temp">{{ theTemp }}°C</p>
+        <p class="state">{{ todayWeather.weather_state_name }}</p>
+    </div>
 </div>
 <div class="footer">
     <div id="date">
