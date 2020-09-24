@@ -40,7 +40,6 @@ export class TodayPreviewComponent implements OnInit, OnDestroy {
   showPosition(position) {
     this.latt = position.coords.latitude;
     this.long = position.coords.longitude;
-    console.log(this.latt + ' ' + this.long);
     this.store.dispatch( new TodayPreviewActions.FindLocationDetails({latt: this.latt, long: this.long}));
   }
 
