@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  locationSearchApi: 'https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?lattlong='
+  locationSearchApi: 'https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?lattlong=',
+  locationDayApi: 'https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location'
 };
 
 /*
