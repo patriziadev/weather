@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  locationSearchApi: 'https://www.metaweather.com/api/location/search/?lattlong='
 };
