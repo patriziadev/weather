@@ -2,6 +2,7 @@
 
 $main-background: #100E1D;
 $left-background: #1E213A;
+$left-background-text: #88869D;
 $toolbar-button-color: #E7E7EB;
 $toolbar-button-color-hover: #110E3C;
 $toolbar-button-background: #6E707A;
@@ -20,6 +21,21 @@ body {
 #today-preview {
     background-color: $left-background;
     margin: 0;
+
+    #date p,
+    #place p {
+        color: $left-background-text;
+        font-size: 18px;
+        text-align: center;
+    }
+
+        .bull {
+            padding: 0 15px;
+        }
+
+        .material-icons {
+            vertical-align: middle;
+        } 
 }
 
 .toolbar {

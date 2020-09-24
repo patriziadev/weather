@@ -5,4 +5,11 @@
 <div class="weather">
     <p *ngIf="error">{{ error }}</p>
 </div>
-<div class="footer">...</div>
+<div class="footer">
+    <div id="date">
+        <p>Today <span class="bull">&bull;</span> {{ day }}, {{ date }} {{  month }}</p>
+    </div>
+    <div id="place">
+        <p *ngIf="location"><span class="material-icons">location_on</span> {{ location.title }}</p>
+    </div>
+</div>

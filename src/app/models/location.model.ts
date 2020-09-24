@@ -1,9 +1,9 @@
 export class LocationModel {
     constructor(
-        latitude: number,
-        longitude: number,
-        title: string,
-        locationType: string,
-        woeid: number
+        public latitude: number,
+        public longitude: number,
+        public title: string,
+        public locationType: string,
+        public woeid: number
     ) {}
 }

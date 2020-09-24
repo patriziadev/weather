@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 
+import { LocationModel } from './../models/location.model';
 import { AppState } from '../store/app.reducer';
 import * as TodayPreviewActions from './store/today-preview.actions';
 
@@ -13,14 +14,25 @@ import * as TodayPreviewActions from './store/today-preview.actions';
 export class TodayPreviewComponent implements OnInit, OnDestroy {
   private latt: number;
   private long: number;
+  public location: LocationModel;
   public error: string;
+  private monthsArray = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  private daysArray = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  public day: string;
+  public date: number;
+  public month: string;
   private storeSubscription: Subscription;
 
   constructor( private store: Store<AppState> ) { }
 
   ngOnInit(): void {
-    this.storeSubscription = this.store.select('todayPreview').subscribe( res => {
-      console.log(res);
+    const dateTime = new Date();
+    this.day = this.daysArray[dateTime.getDay()];
+    this.date = dateTime.getDate();
+    this.month = this.monthsArray[dateTime.getMonth()];
+
+    this.storeSubscription = this.store.select('todayPreview').subscribe( responseData => {
+      this.location = responseData.location;
     });
   }
 
