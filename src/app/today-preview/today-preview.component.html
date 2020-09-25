@@ -5,8 +5,10 @@
 <div class="weather">
     <p *ngIf="error">{{ error }}</p>
     <div *ngIf="weatherForecast">
-        <img alt="{{todayWeather.weather_state_name}}" src="../../assets/images/{{todayWeather.weather_state_name}}.png">
-        <p class="temp">{{ theTemp }}°C</p>
+        <div class="image">
+            <img alt="{{todayWeather.weather_state_name}}" src="../../assets/images/forecast/{{todayWeather.weather_state_name}}.png">
+        </div>
+        <p class="temp"><span class="value">{{ theTemp }}</span>°C</p>
         <p class="state">{{ todayWeather.weather_state_name }}</p>
     </div>
 </div>
