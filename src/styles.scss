@@ -3,7 +3,7 @@
 $main-background: #100E1D;
 $left-background: #1E213A;
 $left-background-text: #88869D;
-$toolbar-button-color: #E7E7EB;
+$main-text-color: #E7E7EB;
 $toolbar-button-color-hover: #110E3C;
 $toolbar-button-background: #6E707A;
 $toolbar-button-background-hover: #E7E7EB;
@@ -22,12 +22,46 @@ body {
     background-color: $left-background;
     margin: 0;
 
+    .weather {
+        text-align: center;
+        color: $left-background-text;
+        font-size: 32px;
+        height: 70vh;
+
+        .image {
+            position: relative;
+            z-index: 1;
+
+            &::before {
+                background: url(./assets/images/Cloud-background.png) top center;
+                opacity: 0.2;
+                content: "";
+                position: absolute;
+                z-index: -1;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+            }
+
+            img {
+                max-width: 150px;
+            }
+        }
+
+        .temp {
+            .value {
+                font-size: 72px;
+                color: $main-text-color;
+            }
+        }
+    }
+
     #date p,
     #place p {
         color: $left-background-text;
         font-size: 18px;
         text-align: center;
-    }
 
         .bull {
             padding: 0 15px;
@@ -36,16 +70,22 @@ body {
         .material-icons {
             vertical-align: middle;
         } 
+    }
+
+    .footer {
+        height: 15vh;
+    }
+
 }
 
 .toolbar {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 100px;
+    height: 15vh;
 
     button {
-        color: $toolbar-button-color;
+        color: $main-text-color;
         background-color: $toolbar-button-background;
         box-shadow: 0 4px 8px $main-background;
         border: 0;
