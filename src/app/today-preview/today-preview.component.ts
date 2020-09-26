@@ -1,9 +1,9 @@
-import { WeatherModel } from './../models/weather.model';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 
 import { LocationModel } from './../models/location.model';
+import { WeatherModel } from './../models/weather.model';
 import { AppState } from '../store/app.reducer';
 import * as TodayPreviewActions from './store/today-preview.actions';
 
@@ -17,34 +17,24 @@ export class TodayPreviewComponent implements OnInit, OnDestroy {
   private long: number;
   public location: LocationModel;
   public error: string;
-  private monthsArray = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  private daysArray = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-  public day: string;
-  public date: number;
-  public month: string;
+  public dateTime: Date;
   public weatherForecast: WeatherModel[];
   public todayWeather: WeatherModel;
-  public theTemp: number;
+
   private storeSubscription: Subscription;
 
   constructor( private store: Store<AppState> ) { }
 
   ngOnInit(): void {
-    const dateTime = new Date();
-    this.day = this.daysArray[dateTime.getDay()];
-    this.date = dateTime.getDate();
-    this.month = this.monthsArray[dateTime.getMonth()];
+    this.dateTime = new Date();
 
     this.storeSubscription = this.store.select('todayPreview').subscribe( responseData => {
       this.location = responseData.location;
       this.error = responseData.error;
       this.weatherForecast = responseData.weather;
       if (this.weatherForecast) {
-        console.log(this.weatherForecast[0]);
         this.todayWeather = this.weatherForecast[0];
-        this.theTemp = Math.round(this.todayWeather.the_temp);
       }
-      
     });
   }
 

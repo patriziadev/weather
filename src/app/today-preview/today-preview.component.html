@@ -8,13 +8,13 @@
         <div class="image">
             <img alt="{{todayWeather.weather_state_name}}" src="../../assets/images/forecast/{{todayWeather.weather_state_name}}.png">
         </div>
-        <p class="temp"><span class="value">{{ theTemp }}</span>°C</p>
+        <p class="temp"><span class="value">{{ todayWeather.the_temp | number:'1.0-0' }}</span>°C</p>
         <p class="state">{{ todayWeather.weather_state_name }}</p>
     </div>
 </div>
 <div class="footer">
     <div id="date">
-        <p>Today <span class="bull">&bull;</span> {{ day }}, {{ date }} {{  month }}</p>
+        <p>Today <span class="bull">&bull;</span> {{ dateTime | customDate }}</p>
     </div>
     <div id="place">
         <p *ngIf="location"><span class="material-icons">location_on</span> {{ location.title }}</p>
