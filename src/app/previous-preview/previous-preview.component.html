@@ -1,1 +1,8 @@
-<p>previous-preview works!</p>
+<div class="toolbar">toolbar</div>
+<div class="next-days-forecast" *ngIf="nextDaysForecast">
+    <div class="day-forecast" *ngFor="let forecast of nextDaysForecast">
+        <div class="date">{{ forecast.applicable_date | customDate }}</div>
+        <div class="image"><img alt="{{forecast.weather_state_name}}" src="../../assets/images/forecast/{{ forecast.weather_state_name }}.png"></div>
+        <div class="temp"><span class="max">{{ forecast.max_temp | number:'1.0-0' }}°C</span> <span class="min">{{ forecast.min_temp | number:'1.0-0'}}°C</span></div>
+    </div>
+</div>

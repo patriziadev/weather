@@ -12,13 +12,15 @@ import { PreviousPreviewComponent } from './previous-preview/previous-preview.co
 import { TodayPreviewEffects} from './today-preview/store/today-preview.effects';
 import { environment } from './../environments/environment';
 import * as fromApp from './store/app.reducer';
+import { CustomDatePipe } from './pipes/custom-date.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodayPreviewComponent,
     TodayHighlightComponent,
-    PreviousPreviewComponent
+    PreviousPreviewComponent,
+    CustomDatePipe
   ],
   imports: [
     BrowserModule,

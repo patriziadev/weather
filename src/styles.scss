@@ -8,12 +8,12 @@ $toolbar-button-color-hover: #110E3C;
 $toolbar-button-background: #6E707A;
 $toolbar-button-background-hover: #E7E7EB;
 $toolbar-button-dimension: 40px;
-$text: #fff;
+$min-temp: #A09FB1;
 $text-font: 'Raleway', sans-serif;
 
 body {
     background-color: $main-background;
-    color: $text;
+    color: $main-text-color;
     font-family: $text-font;
     margin: 0;
 }
@@ -26,7 +26,6 @@ body {
         text-align: center;
         color: $left-background-text;
         font-size: 32px;
-        height: 65vh;
 
         .image {
             position: relative;
@@ -76,6 +75,39 @@ body {
         height: 15vh;
     }
 
+}
+
+#previous-preview {
+
+    .next-days-forecast {
+        display: flex;
+        justify-content: space-around;
+
+        .day-forecast {
+            width: 120px;
+            height: 180px;
+            text-align: center;
+            background-color: $left-background;
+
+            .date {
+                padding: 15px 0;
+            }
+
+            .image img {
+                max-height: 75px;
+            }
+
+            .temp {
+                padding: 15px 0;
+                display: flex;
+                justify-content: space-around;
+
+                .min {
+                    color: $min-temp
+                }
+            }
+        }
+    }
 }
 
 .toolbar {
