@@ -1,22 +1,24 @@
 import { WeatherModel } from './../models/weather.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
 
 import { AppState } from '../store/app.reducer';
-import { map, filter } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-previous-preview',
   templateUrl: './previous-preview.component.html',
   styleUrls: ['./previous-preview.component.scss']
 })
-export class PreviousPreviewComponent implements OnInit {
+export class PreviousPreviewComponent implements OnInit, OnDestroy {
   public nextDaysForecast: WeatherModel[];
+  private weatherSubscription: Subscription; 
 
   constructor( private store: Store<AppState> ) { }
 
   ngOnInit(): void {
-    this.store.select('todayPreview').pipe(
+    this.weatherSubscription = this.store.select('todayPreview').pipe(
       map( responseData => {
         if (responseData.weather) {
           return responseData.weather.filter( (weather, id) => {
@@ -27,5 +29,9 @@ export class PreviousPreviewComponent implements OnInit {
     ).subscribe( responseData => {
       this.nextDaysForecast = responseData;
     });
+  }
+
+  ngOnDestroy(): void {
+    this.weatherSubscription.unsubscribe();
   }
 }
