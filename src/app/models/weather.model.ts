@@ -1,7 +1,7 @@
 export class WeatherModel {
     constructor(
-        public airPressure: number,
-        public applicableDate: string,
+        public air_pressure: number,
+        public applicable_date: string,
         public created: string,
         public humidity: number,
         public id: number,
@@ -10,10 +10,10 @@ export class WeatherModel {
         public predictability: number,
         public the_temp: number,
         public visibility: number,
-        public weatherStateAbbr: string,
+        public weather_state_abbr: string,
         public weather_state_name: string,
-        public windDirection: string,
-        public windDirectionCompass: string,
+        public wind_direction: string,
+        public wind_direction_compass: string,
         public windSpeed: number
     ) {}
 }
