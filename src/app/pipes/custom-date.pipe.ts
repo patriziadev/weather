@@ -12,6 +12,10 @@ export class CustomDatePipe implements PipeTransform {
 
   transform(value: any) {
     value = new Date(value);
+    const today = new Date();
+    if (value.getDate() === (today.getDate() + 1) ) {
+      return 'Tomorrow';
+    }
     this.day = this.daysArray[value.getDay()];
     this.date = value.getDate();
     this.month = this.monthsArray[value.getMonth()];

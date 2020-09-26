@@ -26,7 +26,6 @@ export class PreviousPreviewComponent implements OnInit {
       })
     ).subscribe( responseData => {
       this.nextDaysForecast = responseData;
-      console.log(this.nextDaysForecast);
     });
   }
 }
