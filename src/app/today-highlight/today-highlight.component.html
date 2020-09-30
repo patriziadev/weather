@@ -1,1 +1,31 @@
-<p>today-highlight works!</p>
+<div class="title">Today's Highlights</div>
+<div id="highlights" *ngIf="weatherForecast">
+    <div id="wind">
+        <div class="name">Wind Status</div>
+        <div class="value"><span class="number">{{ weatherForecast.wind_speed | number: '1.0-0' }}</span> mph</div>
+        <div class="compass"><span class="material-icons" [ngStyle]="{'transform': 'rotate(' + wind +'deg)'}">navigation</span> {{ weatherForecast.wind_direction_compass }}</div>
+    </div>
+    <div id="humidity">
+        <div class="name">Humidity</div>
+        <div class="value"><span class="number">{{ weatherForecast.humidity }}</span> %</div>
+        <div class="progress-bar">
+            <div class="scale">
+                <span>0</span>
+                <span>50</span>
+                <span>100</span>
+            </div>
+            <div class="progress-background">
+                <div class="progress-percentage" [ngStyle]="{'width': weatherForecast.humidity + '%'}"></div>
+            </div>
+            <div class="scale-type">%</div>
+        </div>
+    </div>
+    <div id="visibility">
+        <div class="name">Visibility</div>
+        <div class="value"><span class="number">{{ weatherForecast.visibility | number: '1.1-1' }}</span> miles</div>
+    </div>
+    <div id="air-pressure">
+        <div class="name">Air Pressure</div>
+        <div class="value"><span class="number">{{ weatherForecast.air_pressure }}</span> mb</div>
+    </div>
+</div>

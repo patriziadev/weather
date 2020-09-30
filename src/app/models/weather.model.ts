@@ -14,6 +14,6 @@ export class WeatherModel {
         public weather_state_name: string,
         public wind_direction: string,
         public wind_direction_compass: string,
-        public windSpeed: number
+        public wind_speed: number
     ) {}
 }
