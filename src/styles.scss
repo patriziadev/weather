@@ -12,25 +12,11 @@ $min-temp: #A09FB1;
 $progressbar-percentage: #FFEC65;
 $text-font: 'Raleway', sans-serif;
 
-@mixin highlightCards($highlightHeight) {
-    text-align: center;
-    background-color: $left-background;
-    width: 300px;
-    height: $highlightHeight;
-    display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            margin: 0 0 20px 0;
-
-            .value {
-                font-size: 32px;
-
-                .number {
-                    font-size: 48px;
-                    vertical-align: middle;
-                }
-            }
-}
+// Variables for responsive design - screen definition
+$screen-xs-max: 576px;
+$screen-sm-max: 768px;
+$screen-md-max: 992px;
+$screen-lg-max: 1200px;
 
 @mixin progressBar($progressBackground) {
     height: 8px;
@@ -38,166 +24,266 @@ $text-font: 'Raleway', sans-serif;
     border-radius: 5px;  
 }
 
+@mixin xs {
+    @media (max-width: #{$screen-xs-max}) {
+        @content;
+    }
+}
+
+@mixin sm {
+    @media (max-width: #{$screen-sm-max}) {
+        @content;
+    }
+ }
+ 
+@mixin md {
+    @media (max-width: #{$screen-md-max}) {
+        @content;
+    }
+}
+ 
+@mixin lg {
+    @media (max-width: #{$screen-lg-max}) {
+        @content;
+    }
+}
+
+@mixin cardPosition {
+    max-width: 700px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+@mixin highlightCards($highlightHeight) {
+    text-align: center;
+    background-color: $left-background;
+    width: 290px;
+    height: $highlightHeight;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 0 0 20px 0;
+
+    @include sm() {
+        width: 100%;
+    }
+
+    @include md() {
+        width: 100%;
+    }
+
+    .value {
+        font-size: 32px;
+
+        .number {
+            font-size: 48px;
+            vertical-align: middle;
+        }
+    }
+}
+
 body {
     background-color: $main-background;
     color: $main-text-color;
     font-family: $text-font;
     margin: 0;
-}
 
-#today-preview {
-    background-color: $left-background;
-    margin: 0;
+    #container {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: auto auto auto;
+        height: 100vh;
 
-    .weather {
-        text-align: center;
-        color: $left-background-text;
-        font-size: 32px;
-
-        .image {
-            position: relative;
-            z-index: 1;
-
-            &::before {
-                background: url(./assets/images/Cloud-background.png) top center;
-                opacity: 0.2;
-                content: "";
-                position: absolute;
-                z-index: -1;
-                top: 0;
-                bottom: 0;
-                left: 0;
-                right: 0;
-            }
-
-            img {
-                max-width: 150px;
-            }
-        }
-
-        .temp {
-            .value {
-                font-size: 72px;
-                color: $main-text-color;
-            }
-        }
-    }
-
-    #date p,
-    #place p {
-        color: $left-background-text;
-        font-size: 18px;
-        text-align: center;
-
-        .bull {
-            padding: 0 15px;
-        }
-
-        .material-icons {
-            vertical-align: middle;
-        } 
-    }
-
-    .footer {
-        height: 15vh;
-    }
-
-}
-
-#previous-preview {
-
-    .next-days-forecast {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-
-        .day-forecast {
-            width: 120px;
-            height: 180px;
-            text-align: center;
+        #today-preview {
             background-color: $left-background;
+            margin: 0;
+            grid-row: 1/4;
+            grid-column: 1;
 
-            .date {
-                padding: 15px 0;
+            @include sm() {
+                grid-row: 1;
+                grid-column: 1/3;
+                height: 100vh;
             }
-
-            .image img {
-                max-height: 75px;
-            }
-
-            .temp {
-                padding: 15px 0;
-                display: flex;
-                justify-content: space-around;
-
-                .min {
-                    color: $min-temp
-                }
-            }
-        }
-    }
-}
-
-#today-highlight {
-    .title {
-        font-size: 20px;
-        margin: 50px 0 20px 0;
-    }
-
-    #highlights {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-
-        #wind {
-            @include highlightCards(180px);
-
-            .compass {
-                vertical-align: middle;
-
-                .material-icons {
-                    background-color: $toolbar-button-background;
-                    border-radius: 50px;
-                    padding: 5px;
-                }
-            }
-        }
-
-        #humidity {
-            @include highlightCards(180px);
-
-            .progress-bar {
-                width: 15em;
-                margin: 0 auto;
-
-                .scale {
-                    display: flex;
-                    justify-content: space-between;
-                    font-size: 14px;
-                }
-
-                .progress-background {
-                    @include progressBar($main-text-color);
-                    
-    
-                    .progress-percentage {
-                        @include progressBar($progressbar-percentage);
+        
+            .weather {
+                text-align: center;
+                color: $left-background-text;
+                font-size: 32px;
+        
+                .image {
+                    position: relative;
+                    z-index: 1;
+        
+                    &::before {
+                        background: url(./assets/images/Cloud-background.png) top center;
+                        opacity: 0.2;
+                        content: "";
+                        position: absolute;
+                        z-index: -1;
+                        top: 0;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                    }
+        
+                    img {
+                        max-width: 150px;
                     }
                 }
+        
+                .temp {
+                    .value {
+                        font-size: 72px;
+                        color: $main-text-color;
+                    }
+                }
+            }
+        
+            #date p,
+            #place p {
+                color: $left-background-text;
+                font-size: 18px;
+                text-align: center;
+        
+                .bull {
+                    padding: 0 15px;
+                }
+        
+                .material-icons {
+                    vertical-align: middle;
+                } 
+            }
+        
+            .footer {
+                height: 15vh;
+            }
+        }
+        
+        #previous-preview {
+            grid-row: 1;
+            grid-column: 2;
+            margin: 0 50px;
 
-                .scale-type {
-                    text-align: right;
-                    font-size: 14px;
+            @include sm() {
+                grid-row: 2;
+                grid-column: 1/3;
+            }
+        
+            .next-days-forecast {
+                @include cardPosition();
+
+                &::after {
+                    content: "";
+                    flex: 1 1 100%;
+                    max-width: 120px;
+                }
+        
+                .day-forecast {
+                    width: 120px;
+                    height: 180px;
+                    text-align: center;
+                    background-color: $left-background;
+                    margin: 0 0 20px 0;
+        
+                    .date {
+                        padding: 15px 0;
+                    }
+        
+                    .image img {
+                        max-height: 75px;
+                    }
+        
+                    .temp {
+                        padding: 15px 0;
+                        display: flex;
+                        justify-content: space-around;
+        
+                        .min {
+                            color: $min-temp
+                        }
+                    }
                 }
             }
         }
+        
+        #today-highlight {
+            grid-row: 2/3;
+            grid-column: 2;
+            margin: 0 auto;
+            max-width: 700px;
 
-        #visibility {
-            @include highlightCards(140px);
-        }
+            @include sm() {
+                grid-row: 3;
+                grid-column: 1/3;
+                margin: auto 50px;
+            }
 
-        #air-pressure {
-            @include highlightCards(140px);
+            @include lg() {
+                margin: 0 50px;
+            }
+
+            .title {
+                font-size: 20px;
+                margin: 50px 0 20px 0;
+            }
+        
+            #highlights {
+                @include cardPosition();
+        
+                #wind {
+                    @include highlightCards(180px);
+        
+                    .compass {
+                        vertical-align: middle;
+        
+                        .material-icons {
+                            background-color: $toolbar-button-background;
+                            border-radius: 50px;
+                            padding: 5px;
+                        }
+                    }
+                }
+        
+                #humidity {
+                    @include highlightCards(180px);
+        
+                    .progress-bar {
+                        width: 15em;
+                        margin: 0 auto;
+        
+                        .scale {
+                            display: flex;
+                            justify-content: space-between;
+                            font-size: 14px;
+                        }
+        
+                        .progress-background {
+                            @include progressBar($main-text-color);
+                            
+            
+                            .progress-percentage {
+                                @include progressBar($progressbar-percentage);
+                            }
+                        }
+        
+                        .scale-type {
+                            text-align: right;
+                            font-size: 14px;
+                        }
+                    }
+                }
+        
+                #visibility {
+                    @include highlightCards(140px);
+                }
+        
+                #air-pressure {
+                    @include highlightCards(140px);
+                }
+            }
         }
     }
 }
@@ -207,6 +293,11 @@ body {
     justify-content: space-around;
     align-items: center;
     height: 15vh;
+
+    @include sm() {
+        justify-content: space-between;
+        margin: 0 10px;
+    }
 
     button {
         color: $main-text-color;
