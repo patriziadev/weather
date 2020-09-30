@@ -22,7 +22,7 @@
     </div>
     <div id="visibility">
         <div class="name">Visibility</div>
-        <div class="value"><span class="number">{{ weatherForecast.visibility | number: '1.1-1' }}</span> miles</div>
+        <div class="value"><span class="number">{{ weatherForecast.visibility | number: '1.1-1' | dotToComma }}</span> miles</div>
     </div>
     <div id="air-pressure">
         <div class="name">Air Pressure</div>

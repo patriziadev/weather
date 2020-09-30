@@ -13,6 +13,7 @@ import { TodayPreviewEffects} from './today-preview/store/today-preview.effects'
 import { environment } from './../environments/environment';
 import * as fromApp from './store/app.reducer';
 import { CustomDatePipe } from './pipes/custom-date.pipe';
+import { DotToCommaPipe } from './pipes/dot-to-comma.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CustomDatePipe } from './pipes/custom-date.pipe';
     TodayPreviewComponent,
     TodayHighlightComponent,
     PreviousPreviewComponent,
-    CustomDatePipe
+    CustomDatePipe,
+    DotToCommaPipe
   ],
   imports: [
     BrowserModule,
