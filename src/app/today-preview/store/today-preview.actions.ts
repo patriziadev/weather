@@ -8,6 +8,8 @@ export const FIND_LOCATION_DETAILS = '[TodayPreview] FindLocationDetails';
 export const UPDATE_LOCATION = '[TodayPreview] UpdateLocation';
 export const ERROR_LOCATION = '[TodayPreview] ErrorLocation';
 export const UPDATE_WEATHER = '[TodayPreview] UpdateWeather';
+export const IS_FARENHEIT = '[TodayPreview] IsFarenheit';
+export const IS_CELSIUS = '[TodayPreview] IsCelsius';
 
 export class StartLocation implements Action {
     readonly type = START_LOCATION;
@@ -33,9 +35,19 @@ export class UpdateWeather implements Action {
     constructor( public payload: WeatherModel[] ) {}
 }
 
+export class IsFarenheit implements Action {
+    readonly type = IS_FARENHEIT;
+}
+
+export class IsCelsius implements Action {
+    readonly type = IS_CELSIUS;
+}
+
 export type TodayPreviewActions =
     | StartLocation
     | FindLocationDetails
     | UpdateLocation
     | ErrorLocation
-    | UpdateWeather;
+    | UpdateWeather
+    | IsFarenheit
+    | IsCelsius;

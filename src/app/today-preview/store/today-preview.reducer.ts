@@ -7,13 +7,15 @@ export interface State {
     error: string;
     location: LocationModel;
     weather: WeatherModel[];
+    isCelsius: boolean;
 }
 
 const initialState: State = {
     isLocalising: false,
     error: null,
     location: null,
-    weather: null
+    weather: null,
+    isCelsius: true
 };
 
 export function TodayPreviewReducer( state = initialState, action: TodayPreviewActions.TodayPreviewActions) {
@@ -40,6 +42,16 @@ export function TodayPreviewReducer( state = initialState, action: TodayPreviewA
                 ...state,
                 isLocalising: false,
                 weather: action.payload
+            };
+        case TodayPreviewActions.IS_FARENHEIT:
+            return {
+                ...state,
+                isCelsius: false
+            };
+        case TodayPreviewActions.IS_CELSIUS:
+            return {
+                ...state,
+                isCelsius: true
             };
         default:
             return state;
