@@ -21,6 +21,7 @@ export class TodayPreviewComponent implements OnInit, OnDestroy {
   public weatherForecast: WeatherModel[];
   public todayWeather: WeatherModel;
   public temperatureScaleCelsius: boolean;
+  public isLoading: boolean;
 
   private storeSubscription: Subscription;
 
@@ -29,10 +30,13 @@ export class TodayPreviewComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.dateTime = new Date();
 
+    this.onGeolocalisation();
+
     this.storeSubscription = this.store.select('todayPreview').subscribe( responseData => {
       this.location = responseData.location;
       this.error = responseData.error;
       this.weatherForecast = responseData.weather;
+      this.isLoading = responseData.isLocalising;
       if (this.weatherForecast) {
         this.todayWeather = this.weatherForecast[0];
       }
