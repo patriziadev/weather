@@ -1,8 +1,9 @@
-<div class="toolbar">toolbar</div>
+<div class="toolbar"><app-temperature-changer></app-temperature-changer></div>
 <div class="next-days-forecast" *ngIf="nextDaysForecast">
     <div class="day-forecast" *ngFor="let forecast of nextDaysForecast">
         <div class="date">{{ forecast.applicable_date | customDate }}</div>
         <div class="image"><img alt="{{forecast.weather_state_name}}" src="../../assets/images/forecast/{{ forecast.weather_state_name }}.png"></div>
-        <div class="temp"><span class="max">{{ forecast.max_temp | number:'1.0-0' }}°C</span> <span class="min">{{ forecast.min_temp | number:'1.0-0'}}°C</span></div>
+        <div class="temp" *ngIf="temperatureScaleCelsius"><span class="max">{{ forecast.max_temp | number:'1.0-0' }}°C</span> <span class="min">{{ forecast.min_temp | number:'1.0-0'}}°C</span></div>
+        <div class="temp" *ngIf="!temperatureScaleCelsius"><span class="max">{{ forecast.max_temp | celsiusToFarenheit | number:'1.0-0' }}°F</span> <span class="min">{{ forecast.min_temp | celsiusToFarenheit|  number:'1.0-0'}}°K</span></div>
     </div>
 </div>

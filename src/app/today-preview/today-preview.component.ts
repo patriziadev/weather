@@ -20,6 +20,7 @@ export class TodayPreviewComponent implements OnInit, OnDestroy {
   public dateTime: Date;
   public weatherForecast: WeatherModel[];
   public todayWeather: WeatherModel;
+  public temperatureScaleCelsius: boolean;
 
   private storeSubscription: Subscription;
 
@@ -35,6 +36,7 @@ export class TodayPreviewComponent implements OnInit, OnDestroy {
       if (this.weatherForecast) {
         this.todayWeather = this.weatherForecast[0];
       }
+      this.temperatureScaleCelsius = responseData.isCelsius;
     });
   }
 

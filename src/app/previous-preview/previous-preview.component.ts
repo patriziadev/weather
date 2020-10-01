@@ -13,7 +13,8 @@ import { map } from 'rxjs/operators';
 })
 export class PreviousPreviewComponent implements OnInit, OnDestroy {
   public nextDaysForecast: WeatherModel[];
-  private weatherSubscription: Subscription; 
+  public temperatureScaleCelsius: boolean;
+  private weatherSubscription: Subscription;
 
   constructor( private store: Store<AppState> ) { }
 
@@ -21,6 +22,7 @@ export class PreviousPreviewComponent implements OnInit, OnDestroy {
     this.weatherSubscription = this.store.select('todayPreview').pipe(
       map( responseData => {
         if (responseData.weather) {
+          this.temperatureScaleCelsius = responseData.isCelsius;
           return responseData.weather.filter( (weather, id) => {
             return id !== 0;
           });
