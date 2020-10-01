@@ -16,6 +16,7 @@ import * as fromApp from './store/app.reducer';
 import { CustomDatePipe } from './pipes/custom-date.pipe';
 import { DotToCommaPipe } from './pipes/dot-to-comma.pipe';
 import { CelsiusToFarenheitPipe } from './pipes/celsius-to-farenheit.pipe';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { CelsiusToFarenheitPipe } from './pipes/celsius-to-farenheit.pipe';
     CustomDatePipe,
     DotToCommaPipe,
     TemperatureChangerComponent,
-    CelsiusToFarenheitPipe
+    CelsiusToFarenheitPipe,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
