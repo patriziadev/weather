@@ -8,7 +8,8 @@
         <div class="image">
             <img alt="{{todayWeather.weather_state_name}}" src="../../assets/images/forecast/{{todayWeather.weather_state_name}}.png">
         </div>
-        <p class="temp"><span class="value">{{ todayWeather.the_temp | number:'1.0-0' }}</span>°C</p>
+        <p class="temp" *ngIf="temperatureScaleCelsius"><span class="value">{{ todayWeather.the_temp | number:'1.0-0' }}</span>°C</p>
+        <p class="temp" *ngIf="!temperatureScaleCelsius"><span class="value">{{ todayWeather.the_temp | celsiusToFarenheit | number:'1.0-0' }}</span>°F</p>
         <p class="state">{{ todayWeather.weather_state_name }}</p>
     </div>
 </div>

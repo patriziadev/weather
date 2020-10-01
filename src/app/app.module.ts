@@ -9,11 +9,13 @@ import { AppComponent } from './app.component';
 import { TodayPreviewComponent } from './today-preview/today-preview.component';
 import { TodayHighlightComponent } from './today-highlight/today-highlight.component';
 import { PreviousPreviewComponent } from './previous-preview/previous-preview.component';
+import { TemperatureChangerComponent } from './previous-preview/temperature-changer/temperature-changer.component';
 import { TodayPreviewEffects} from './today-preview/store/today-preview.effects';
 import { environment } from './../environments/environment';
 import * as fromApp from './store/app.reducer';
 import { CustomDatePipe } from './pipes/custom-date.pipe';
 import { DotToCommaPipe } from './pipes/dot-to-comma.pipe';
+import { CelsiusToFarenheitPipe } from './pipes/celsius-to-farenheit.pipe';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { DotToCommaPipe } from './pipes/dot-to-comma.pipe';
     TodayHighlightComponent,
     PreviousPreviewComponent,
     CustomDatePipe,
-    DotToCommaPipe
+    DotToCommaPipe,
+    TemperatureChangerComponent,
+    CelsiusToFarenheitPipe
   ],
   imports: [
     BrowserModule,
