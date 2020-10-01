@@ -1,4 +1,4 @@
-<div class="title">Today's Highlights</div>
+<div class="title" *ngIf="weatherForecast">Today's Highlights</div>
 <div id="highlights" *ngIf="weatherForecast">
     <div id="wind">
         <div class="name">Wind Status</div>
