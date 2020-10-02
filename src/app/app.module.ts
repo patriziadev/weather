@@ -17,6 +17,7 @@ import { CustomDatePipe } from './pipes/custom-date.pipe';
 import { DotToCommaPipe } from './pipes/dot-to-comma.pipe';
 import { CelsiusToFarenheitPipe } from './pipes/celsius-to-farenheit.pipe';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { SpinnerComponent } from './spinner/spinner.component';
     DotToCommaPipe,
     TemperatureChangerComponent,
     CelsiusToFarenheitPipe,
-    SpinnerComponent
+    SpinnerComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

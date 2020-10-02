@@ -1,5 +1,8 @@
 <div id="container">
-  <div id="today-preview">
+  <div id="search" *ngIf="isSearchMode">
+    <app-search></app-search>
+  </div>
+  <div id="today-preview" *ngIf="!isSearchMode">
     <app-today-preview></app-today-preview>
   </div>
   <div id="previous-preview">
