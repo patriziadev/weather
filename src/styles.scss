@@ -217,22 +217,54 @@ body {
 
         #search {
             @include leftPanel();
+            padding: 0 30px;
 
-            input {
-                border: 1px solid $main-text-color;
-                background: transparent;
-                color: $search-text;
-                padding: 11spx;
-                margin-right: 10px;
+            #search-toolbar {
+                display: flex;
+                justify-content: flex-end;
+                margin-top: 10px;
 
-                &:focus {
-                    outline: none;
+                button {
+                    color: $main-text-color;
+                    border: 0;
+                    background-color: transparent;
+
+                    &:hover {
+                        background-color: transparent;
+                    }
+
+                    &:focus {
+                        outline: none;
+                    }
                 }
             }
 
-            button {
-                @include button($search-background-button);
-            }
+            #search-bar {
+                padding: 2rem 0;
+
+                span.material-icons {
+                    position: absolute;
+                    margin: 9px;
+                    color: $search-text;
+                }
+
+                input {
+                    border: 1px solid $main-text-color;
+                    background: transparent;
+                    color: $search-text;
+                    padding: 11px 11px 11px 35px;
+                    margin-right: 10px;
+                    width: 55%;
+    
+                    &:focus {
+                        outline: none;
+                    }
+                }
+    
+                button {
+                    @include button($search-background-button);
+                }
+            } 
         }
         
         #previous-preview {
