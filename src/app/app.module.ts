@@ -4,6 +4,7 @@ import { StoreModule } from '@ngrx/store';
 import { HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { TodayPreviewComponent } from './today-preview/today-preview.component';
@@ -35,6 +36,7 @@ import { SearchComponent } from './search/search.component';
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     StoreModule.forRoot(fromApp.appReducer),
     EffectsModule.forRoot([TodayPreviewEffects]),
     StoreDevtoolsModule.instrument({logOnly: environment.production})

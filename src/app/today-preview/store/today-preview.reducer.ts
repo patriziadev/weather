@@ -15,7 +15,7 @@ const initialState: State = {
     error: null,
     location: null,
     weather: null,
-    isCelsius: true
+    isCelsius: true,
 };
 
 export function TodayPreviewReducer( state = initialState, action: TodayPreviewActions.TodayPreviewActions) {
