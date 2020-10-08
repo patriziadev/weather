@@ -2,10 +2,12 @@ import * as SearchActions from './search.actions';
 
 export interface State {
     isSearchMode: boolean;
+    error: string;
 }
 
 const initState: State = {
-    isSearchMode: false
+    isSearchMode: false,
+    error: ''
 };
 
 export function SearchReducer(state = initState, action: SearchActions.SearchActions) {
@@ -19,6 +21,16 @@ export function SearchReducer(state = initState, action: SearchActions.SearchAct
             return {
                 ...state,
                 isSearchMode: true
+            };
+        case SearchActions.SEARCH_LOCATION_DETAILS:
+            return {
+                ...state,
+                error: null
+            }
+        case SearchActions.SEARCH_ERROR:
+            return {
+                ...state,
+                error : 'Location not found. Please insert another place.'
             };
         default:
             return state;

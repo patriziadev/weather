@@ -1,0 +1,9 @@
+<div id="search-bar">
+    <form (ngSubmit)="onSearch(formData)" #formData="ngForm">
+        <span class="material-icons">search</span>
+        <input ngModel name="searchInput" type="text" placeholder="search location" required>
+        <button [disabled]="!formData.valid" type="submit" class="square">Search</button>
+        <div class="search-error" *ngIf="!formData.valid && formData.touched">Please insert your favourite city</div>
+        <div class="search-error" *ngIf="error">{{ error }}</div>
+    </form>
+</div>

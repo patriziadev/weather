@@ -19,6 +19,10 @@ import { DotToCommaPipe } from './pipes/dot-to-comma.pipe';
 import { CelsiusToFarenheitPipe } from './pipes/celsius-to-farenheit.pipe';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { SearchComponent } from './search/search.component';
+import { SearchToolbarComponent } from './search/search-toolbar/search-toolbar.component';
+import { SearchFieldComponent } from './search/search-field/search-field.component';
+import { SearchResultsComponent } from './search/search-results/search-results.component';
+import { SearchEffects } from './search/store/search.effects';
 
 @NgModule({
   declarations: [
@@ -31,14 +35,17 @@ import { SearchComponent } from './search/search.component';
     TemperatureChangerComponent,
     CelsiusToFarenheitPipe,
     SpinnerComponent,
-    SearchComponent
+    SearchComponent,
+    SearchToolbarComponent,
+    SearchFieldComponent,
+    SearchResultsComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     StoreModule.forRoot(fromApp.appReducer),
-    EffectsModule.forRoot([TodayPreviewEffects]),
+    EffectsModule.forRoot([TodayPreviewEffects, SearchEffects]),
     StoreDevtoolsModule.instrument({logOnly: environment.production})
   ],
   providers: [],

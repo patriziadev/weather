@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   locationSearchApi: 'https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?lattlong=',
+  locationFreeSearchApi: 'https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query=',
   locationDayApi: 'https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/'
 };
 
