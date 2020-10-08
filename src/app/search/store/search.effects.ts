@@ -7,6 +7,7 @@ import { environment } from './../../../environments/environment';
 import * as SearchActions from './search.actions';
 import * as TodayPreviewActions from './../../today-preview/store/today-preview.actions';
 import { of } from 'rxjs';
+import { title } from 'process';
 
 export interface LocationResponseDataFromFreeSearch {
     title: string;
@@ -36,10 +37,10 @@ export class SearchEffects {
                             title: responseData[0].title,
                             locationType: responseData[0].location_type,
                             woeid: responseData[0].woeid
-                        }), new SearchActions.SearchModeOff()];
+                        }), new SearchActions.SaveResearch(responseData[0].title),
+                        new SearchActions.SearchModeOff()];
                     }),
                     catchError( error => {
-                        console.log(error);
                         return of(new SearchActions.SearchError());
                     })
             );
