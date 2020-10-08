@@ -264,6 +264,10 @@ body {
                 button {
                     @include button($search-background-button);
                 }
+
+                .search-error {
+                    padding: 2em 0;
+                }
             } 
         }
         
