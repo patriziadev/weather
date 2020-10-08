@@ -28,6 +28,7 @@ export function TodayPreviewReducer( state = initialState, action: TodayPreviewA
         case TodayPreviewActions.UPDATE_LOCATION:
             return {
                 ... state,
+                isLocalising: true,
                 error: null,
                 location: action.payload
             };
