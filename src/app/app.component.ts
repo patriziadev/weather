@@ -18,8 +18,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterContentInit {
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
-    this.storeSubscription = this.store.select('todayPreview').subscribe( responseData => {
-  //    this.isLoading = responseData.isLocalising;
+    this.storeSubscription = this.store.select('search').subscribe( responseData => {
       this.isSearchMode = responseData.isSearchMode;
     });
   }
