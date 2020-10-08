@@ -3,11 +3,13 @@ import * as SearchActions from './search.actions';
 export interface State {
     isSearchMode: boolean;
     error: string;
+    savedResearches: string[];
 }
 
 const initState: State = {
     isSearchMode: false,
-    error: ''
+    error: '',
+    savedResearches: []
 };
 
 export function SearchReducer(state = initState, action: SearchActions.SearchActions) {
@@ -26,7 +28,14 @@ export function SearchReducer(state = initState, action: SearchActions.SearchAct
             return {
                 ...state,
                 error: null
-            }
+            };
+        case SearchActions.SAVE_RESEARCH:
+            const newSavedSerearches = [...state.savedResearches];
+            newSavedSerearches.push(action.payload);
+            return {
+                ...state,
+                savedResearches: newSavedSerearches
+            };
         case SearchActions.SEARCH_ERROR:
             return {
                 ...state,
