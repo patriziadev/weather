@@ -6,6 +6,7 @@ import { LocationModel } from './../models/location.model';
 import { WeatherModel } from './../models/weather.model';
 import { AppState } from '../store/app.reducer';
 import * as TodayPreviewActions from './store/today-preview.actions';
+import * as SearchActions from '../search/store/search.actions';
 
 @Component({
   selector: 'app-today-preview',
@@ -18,7 +19,7 @@ export class TodayPreviewComponent implements OnInit, OnDestroy {
   public location: LocationModel;
   public error: string;
   public dateTime: Date;
-  public weatherForecast: WeatherModel[];
+  public weatherForecast: WeatherModel[] = [];
   public todayWeather: WeatherModel;
   public temperatureScaleCelsius: boolean;
   public isLoading: boolean;
@@ -30,8 +31,6 @@ export class TodayPreviewComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.dateTime = new Date();
 
-    this.onGeolocalisation();
-
     this.storeSubscription = this.store.select('todayPreview').subscribe( responseData => {
       this.location = responseData.location;
       this.error = responseData.error;
@@ -40,12 +39,18 @@ export class TodayPreviewComponent implements OnInit, OnDestroy {
       if (this.weatherForecast) {
         this.todayWeather = this.weatherForecast[0];
       }
+
+      console.log(this.weatherForecast);
       this.temperatureScaleCelsius = responseData.isCelsius;
     });
   }
 
   ngOnDestroy(): void {
     this.storeSubscription.unsubscribe();
+  }
+
+  onSearch() {
+    this.store.dispatch(new SearchActions.SearchModeOn());
   }
 
   onGeolocalisation() {
