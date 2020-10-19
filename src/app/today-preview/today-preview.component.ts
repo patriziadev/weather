@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterContentInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 
@@ -13,7 +13,7 @@ import * as SearchActions from '../search/store/search.actions';
   templateUrl: './today-preview.component.html',
   styleUrls: ['./today-preview.component.scss']
 })
-export class TodayPreviewComponent implements OnInit, OnDestroy {
+export class TodayPreviewComponent implements OnInit, AfterContentInit, OnDestroy {
   private latt: number;
   private long: number;
   public location: LocationModel;
@@ -39,10 +39,15 @@ export class TodayPreviewComponent implements OnInit, OnDestroy {
       if (this.weatherForecast) {
         this.todayWeather = this.weatherForecast[0];
       }
-
       console.log(this.weatherForecast);
       this.temperatureScaleCelsius = responseData.isCelsius;
+
     });
+  }
+  ngAfterContentInit() {
+    if (!this.weatherForecast) {
+      this.onGeolocalisation();
+    }
   }
 
   ngOnDestroy(): void {
