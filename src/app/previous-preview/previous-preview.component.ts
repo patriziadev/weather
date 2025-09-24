@@ -9,28 +9,32 @@ import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-previous-preview',
   templateUrl: './previous-preview.component.html',
-  styleUrls: ['./previous-preview.component.scss']
+  styleUrls: ['./previous-preview.component.scss'],
+  standalone: false,
 })
 export class PreviousPreviewComponent implements OnInit, OnDestroy {
   public nextDaysForecast: WeatherModel[];
   public temperatureScaleCelsius: boolean;
   private weatherSubscription: Subscription;
 
-  constructor( private store: Store<AppState> ) { }
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
-    this.weatherSubscription = this.store.select('todayPreview').pipe(
-      map( responseData => {
-        if (responseData.weather) {
-          this.temperatureScaleCelsius = responseData.isCelsius;
-          return responseData.weather.filter( (weather, id) => {
-            return id !== 0;
-          });
-        }
-      })
-    ).subscribe( responseData => {
-      this.nextDaysForecast = responseData;
-    });
+    this.weatherSubscription = this.store
+      .select('todayPreview')
+      .pipe(
+        map((responseData) => {
+          if (responseData.weather) {
+            this.temperatureScaleCelsius = responseData.isCelsius;
+            return responseData.weather.filter((weather, id) => {
+              return id !== 0;
+            });
+          }
+        })
+      )
+      .subscribe((responseData) => {
+        this.nextDaysForecast = responseData;
+      });
   }
 
   ngOnDestroy(): void {

@@ -7,14 +7,13 @@ import * as TodayPreviewActions from './../../today-preview/store/today-preview.
 @Component({
   selector: 'app-temperature-changer',
   templateUrl: './temperature-changer.component.html',
-  styleUrls: ['./temperature-changer.component.scss']
+  styleUrls: ['./temperature-changer.component.scss'],
+  standalone: false,
 })
 export class TemperatureChangerComponent implements OnInit {
+  constructor(private store: Store<AppState>) {}
 
-  constructor(private store: Store<AppState>) { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onCelsius() {
     this.store.dispatch(new TodayPreviewActions.IsCelsius());
@@ -23,5 +22,4 @@ export class TemperatureChangerComponent implements OnInit {
   onFarenheit() {
     this.store.dispatch(new TodayPreviewActions.IsFarenheit());
   }
-
 }

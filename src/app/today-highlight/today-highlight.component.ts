@@ -9,7 +9,8 @@ import { WeatherModel } from './../models/weather.model';
 @Component({
   selector: 'app-today-highlight',
   templateUrl: './today-highlight.component.html',
-  styleUrls: ['./today-highlight.component.scss']
+  styleUrls: ['./today-highlight.component.scss'],
+  standalone: false,
 })
 export class TodayHighlightComponent implements OnInit, OnDestroy {
   public weatherForecast: WeatherModel;
@@ -17,7 +18,7 @@ export class TodayHighlightComponent implements OnInit, OnDestroy {
   public wind: number;
 
   windCompass = {
-    N : 0,
+    N: 0,
     NNE: 22.5,
     NE: 45,
     ENE: 67.5,
@@ -37,13 +38,15 @@ export class TodayHighlightComponent implements OnInit, OnDestroy {
 
   private windMap = new Map(Object.entries(this.windCompass));
 
-  constructor( private store: Store<AppState>) { }
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
-    this.store.select('todayPreview').subscribe( responseData => {
+    this.store.select('todayPreview').subscribe((responseData) => {
       if (responseData.weather) {
         this.weatherForecast = responseData.weather[0];
-        this.wind = this.windMap.get(this.weatherForecast.wind_direction_compass);
+        this.wind = this.windMap.get(
+          this.weatherForecast.wind_direction_compass
+        );
         console.log(this.weatherForecast);
       }
     });

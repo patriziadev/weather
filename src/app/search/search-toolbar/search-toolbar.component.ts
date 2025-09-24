@@ -7,17 +7,15 @@ import * as SearchActions from '../store/search.actions';
 @Component({
   selector: 'app-search-toolbar',
   templateUrl: './search-toolbar.component.html',
-  styleUrls: ['./search-toolbar.component.scss']
+  styleUrls: ['./search-toolbar.component.scss'],
+  standalone: false,
 })
 export class SearchToolbarComponent implements OnInit {
+  constructor(private store: Store<State>) {}
 
-  constructor(private store: Store<State>) { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onSearchClose() {
-    this.store.dispatch( new SearchActions.SearchModeOff());
+    this.store.dispatch(new SearchActions.SearchModeOff());
   }
-
 }
