@@ -11,9 +11,12 @@ import * as SearchActions from '../search/store/search.actions';
 @Component({
   selector: 'app-today-preview',
   templateUrl: './today-preview.component.html',
-  styleUrls: ['./today-preview.component.scss']
+  styleUrls: ['./today-preview.component.scss'],
+  standalone: false,
 })
-export class TodayPreviewComponent implements OnInit, AfterContentInit, OnDestroy {
+export class TodayPreviewComponent
+  implements OnInit, AfterContentInit, OnDestroy
+{
   private latt: number;
   private long: number;
   public location: LocationModel;
@@ -26,23 +29,24 @@ export class TodayPreviewComponent implements OnInit, AfterContentInit, OnDestro
 
   private storeSubscription: Subscription;
 
-  constructor( private store: Store<AppState> ) { }
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
     this.dateTime = new Date();
 
-    this.storeSubscription = this.store.select('todayPreview').subscribe( responseData => {
-      this.location = responseData.location;
-      this.error = responseData.error;
-      this.weatherForecast = responseData.weather;
-      this.isLoading = responseData.isLocalising;
-      if (this.weatherForecast) {
-        this.todayWeather = this.weatherForecast[0];
-      }
-      console.log(this.weatherForecast);
-      this.temperatureScaleCelsius = responseData.isCelsius;
-
-    });
+    this.storeSubscription = this.store
+      .select('todayPreview')
+      .subscribe((responseData) => {
+        this.location = responseData.location;
+        this.error = responseData.error;
+        this.weatherForecast = responseData.weather;
+        this.isLoading = responseData.isLocalising;
+        if (this.weatherForecast) {
+          this.todayWeather = this.weatherForecast[0];
+        }
+        console.log(this.weatherForecast);
+        this.temperatureScaleCelsius = responseData.isCelsius;
+      });
   }
   ngAfterContentInit() {
     if (!this.weatherForecast) {
@@ -59,24 +63,32 @@ export class TodayPreviewComponent implements OnInit, AfterContentInit, OnDestro
   }
 
   onGeolocalisation() {
-      this.store.dispatch( new TodayPreviewActions.StartLocation() );
-      navigator.geolocation.getCurrentPosition( (position) => {
+    this.store.dispatch(new TodayPreviewActions.StartLocation());
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
         this.showPosition(position);
-      }, (error) => {
+      },
+      (error) => {
         this.showError(error);
-      });
-    }
+      }
+    );
+  }
 
   showPosition(position) {
     this.latt = position.coords.latitude;
     this.long = position.coords.longitude;
-    this.store.dispatch( new TodayPreviewActions.FindLocationDetails({latt: this.latt, long: this.long}));
+    this.store.dispatch(
+      new TodayPreviewActions.FindLocationDetails({
+        latt: this.latt,
+        long: this.long,
+      })
+    );
   }
 
   showError(error) {
     if (error) {
-      this.error = 'It is not possible to geolocalize you. Please use the Search button to find tour position.';
+      this.error =
+        'It is not possible to geolocalize you. Please use the Search button to find tour position.';
     }
   }
-
 }

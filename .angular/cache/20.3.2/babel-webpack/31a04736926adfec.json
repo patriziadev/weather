@@ -1,0 +1,1 @@
+{"ast":null,"code":"import * as fromTodayPreview from '../today-preview/store/today-preview.reducer';\nimport * as fromSearch from '../search/store/search.reducer';\nexport const appReducer = {\n  todayPreview: fromTodayPreview.TodayPreviewReducer,\n  search: fromSearch.SearchReducer\n};","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}
